@@ -6,7 +6,7 @@ namespace CodeSignal_Arcade_CSharp
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello, CodeSignal!");
+            Console.WriteLine("Hello, CodeSignal Arcade!");
 
             // TODO: Create test bed application.
         }

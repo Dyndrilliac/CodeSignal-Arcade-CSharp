@@ -21,7 +21,9 @@ namespace CodeSignal_Arcade_CSharp
 
         public static int adjacentElementsProduct(int[] inputArray) {
             List<int> outputList = new List<int>();
+
             for (int i = 0; i < (inputArray.Length - 1); i++) outputList.Add(inputArray[i] * inputArray[i+1]);
+
             return outputList.Max();
         }
 
@@ -42,10 +44,11 @@ namespace CodeSignal_Arcade_CSharp
 
         public static int makeArrayConsecutive2(int[] statues) {
             List<int> statuesList = new List<int>(statues);
+
             return (((statuesList.Max() + 1) - statuesList.Min()) - statuesList.Count);
         }
 
-        public static bool removeElement(List<int> sequence, int i) {
+        private static bool removeElement(List<int> sequence, int i) {
             bool removeElement = false;
 
             if      (i == 0)                    removeElement = (sequence[i] >= sequence[i + 1]);
@@ -57,15 +60,11 @@ namespace CodeSignal_Arcade_CSharp
                         removeElement = true;
 
                         // Handle edge case for test 19.
-                        if (i == (sequence.Count - 2)) {
-                            return false;
-                        }
+                        if (i == (sequence.Count - 2)) return false;
 
                         // Handle edge case for test 16.
                         if (i < (sequence.Count - 2)) {
-                            if ((sequence[i + 1] < sequence[i + 2]) && (sequence[i] < sequence[i + 2])) {
-                                return false;
-                            }
+                            if ((sequence[i + 1] < sequence[i + 2]) && (sequence[i] < sequence[i + 2])) return false;
                         }
                     }
                 } else removeElement = true;
@@ -98,7 +97,7 @@ namespace CodeSignal_Arcade_CSharp
             return true;
         }
 
-        public static bool isBadRoom(int[][] matrix, int i, int j) {
+        private static bool isBadRoom(int[][] matrix, int i, int j) {
             for (int k = i; k >= 0; k--) {
                 if (matrix[k][j] == 0) return true;
             }
@@ -124,9 +123,8 @@ namespace CodeSignal_Arcade_CSharp
             int maxLength = 0;
 
             foreach (string s in inputArray) {
-                if (s.Length == maxLength) {
-                    longestStrings.Add(s);
-                } else if (s.Length > maxLength) {
+                if      (s.Length == maxLength) longestStrings.Add(s);
+                else if (s.Length > maxLength) {
                     maxLength = s.Length;
                     longestStrings.Clear();
                     longestStrings.Add(s);
@@ -138,30 +136,25 @@ namespace CodeSignal_Arcade_CSharp
 
         public static int commonCharacterCount(string s1, string s2) {
             HashSet<char> characterSet = new HashSet<char>();
-            Dictionary<char,int> freqMap1 = new Dictionary<char,int>();
-            Dictionary<char,int> freqMap2 = new Dictionary<char,int>();
+            Dictionary<char,int> freqMap1 = new Dictionary<char,int>(), freqMap2 = new Dictionary<char,int>();
             int count = 0;
 
             foreach (char c in s1) {
-                if (freqMap1.ContainsKey(c)) {
-                    freqMap1[c] += 1;
-                }
+                if (freqMap1.ContainsKey(c)) freqMap1[c] += 1;
                 else freqMap1.Add(c,1);
+
                 characterSet.Add(c);
             }
 
             foreach (char c in s2) {
-                if (freqMap2.ContainsKey(c)) {
-                    freqMap2[c] += 1;
-                }
+                if (freqMap2.ContainsKey(c)) freqMap2[c] += 1;
                 else freqMap2.Add(c,1);
+
                 characterSet.Add(c);
             }
 
             foreach (char c in characterSet) {
-                if (freqMap1.ContainsKey(c) && freqMap2.ContainsKey(c)) {
-                    count += Math.Min(freqMap1[c], freqMap2[c]);
-                }
+                if (freqMap1.ContainsKey(c) && freqMap2.ContainsKey(c)) count += Math.Min(freqMap1[c], freqMap2[c]);
             }
 
             return count;
@@ -171,18 +164,13 @@ namespace CodeSignal_Arcade_CSharp
             string number = n.ToString();
             int sumA = 0, sumB = 0, middleBound = (number.Length / 2);
             
-            for (int i = 0; i < middleBound; i++) {
-                sumA += Int32.Parse(number[i].ToString());
-            }
-            
-            for (int i = middleBound; i < number.Length; i++) {
-                sumB += Int32.Parse(number[i].ToString());
-            }
+            for (int i = 0;           i < middleBound;   i++) sumA += Int32.Parse(number[i].ToString());
+            for (int i = middleBound; i < number.Length; i++) sumB += Int32.Parse(number[i].ToString());
             
             return (sumA == sumB);
         }
 
-        public static bool isTree(int n) {
+        private static bool isTree(int n) {
             return (n == -1);
         }
 
@@ -245,11 +233,8 @@ namespace CodeSignal_Arcade_CSharp
             int[] sums = new int[2];
 
             for (int i = 0; i < a.Length; i++) {
-                if ((i == 0) || ((i % 2) == 0)) {
-                    sums[0] += a[i];
-                } else if ((i == 1) || ((i % 2) != 0)) {
-                    sums[1] += a[i];
-                }
+                if      ((i == 0) || ((i % 2) == 0)) sums[0] += a[i];
+                else if ((i == 1) || ((i % 2) != 0)) sums[1] += a[i];
             }
 
             return sums;
@@ -261,16 +246,14 @@ namespace CodeSignal_Arcade_CSharp
             result[0] = new string('*', picture[0].Length + 2);
             result[picture.Length + 1] = result[0];
 
-            for (int i = 1; i < (picture.Length + 1); i++) {
-                result[i] = "*" + picture[i - 1] + "*";
-            }
+            for (int i = 1; i < (picture.Length + 1); i++) result[i] = ("*" + picture[i - 1] + "*");
 
             return result;
         }
 
         public static bool areSimilar(int[] a, int[] b) {
             if (a.Length != b.Length) return false;
-            if (a.SequenceEqual(b)) return true;
+            if (a.SequenceEqual(b))   return true;
 
             for (int i = 0; i < a.Length; i++) {
                 if (a[i] != b[i]) {
@@ -293,7 +276,7 @@ namespace CodeSignal_Arcade_CSharp
             return false;
         }
 
-        public static int fixItem(int[] a, int i) {
+        private static int fixItem(int[] a, int i) {
             int moves = 0;
 
             while (a[i] <= a[i - 1]) {
@@ -306,13 +289,11 @@ namespace CodeSignal_Arcade_CSharp
         public static int arrayChange(int[] inputArray) {
             int moves = 0;
 
-            for (int i = 1; i < inputArray.Length; i++) {
-                moves += fixItem(inputArray, i);
-            }
+            for (int i = 1; i < inputArray.Length; i++) moves += fixItem(inputArray, i);
 
             return moves;
         }
 
-        // TODO: Finish the rest of the Arcade tasks.
+        // TODO: Finish the rest of the CodeSignal Arcade tasks.
     }
 }
