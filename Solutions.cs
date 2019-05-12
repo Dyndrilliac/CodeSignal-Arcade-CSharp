@@ -7,25 +7,25 @@ namespace CodeSignal_Arcade_CSharp
 {
     class Solutions
     {
-        static int add(int param1, int param2) {
+        public static int add(int param1, int param2) {
             return (param1 + param2);
         }
 
-        static int centuryFromYear(int year) {
+        public static int centuryFromYear(int year) {
             return ((year % 100) != 0) ? ((year / 100) + 1) : (year / 100);
         }
 
-        static bool checkPalindrome(string inputString) {
+        public static bool checkPalindrome(string inputString) {
             return inputString.SequenceEqual(inputString.Reverse());
         }
 
-        static int adjacentElementsProduct(int[] inputArray) {
+        public static int adjacentElementsProduct(int[] inputArray) {
             List<int> outputList = new List<int>();
             for (int i = 0; i < (inputArray.Length - 1); i++) outputList.Add(inputArray[i] * inputArray[i+1]);
             return outputList.Max();
         }
 
-        static int shapeArea(int n) {
+        public static int shapeArea(int n) {
             switch (n) {
                 case 4:
                     return 25;
@@ -40,12 +40,12 @@ namespace CodeSignal_Arcade_CSharp
             }
         }
 
-        static int makeArrayConsecutive2(int[] statues) {
+        public static int makeArrayConsecutive2(int[] statues) {
             List<int> statuesList = new List<int>(statues);
             return (((statuesList.Max() + 1) - statuesList.Min()) - statuesList.Count);
         }
 
-        static bool removeElement(List<int> sequence, int i) {
+        public static bool removeElement(List<int> sequence, int i) {
             bool removeElement = false;
 
             if      (i == 0)                    removeElement = (sequence[i] >= sequence[i + 1]);
@@ -74,7 +74,7 @@ namespace CodeSignal_Arcade_CSharp
             return removeElement;
         }
 
-        static bool almostIncreasingSequence(int[] sequence) {
+        public static bool almostIncreasingSequence(int[] sequence) {
             if (sequence.Length <= 2) return true;
 
             List<int> initSequence = new List<int>(sequence);
@@ -98,7 +98,7 @@ namespace CodeSignal_Arcade_CSharp
             return true;
         }
 
-        static bool isBadRoom(int[][] matrix, int i, int j) {
+        public static bool isBadRoom(int[][] matrix, int i, int j) {
             for (int k = i; k >= 0; k--) {
                 if (matrix[k][j] == 0) return true;
             }
@@ -106,7 +106,7 @@ namespace CodeSignal_Arcade_CSharp
             return false;
         }
 
-        static int matrixElementsSum(int[][] matrix) {
+        public static int matrixElementsSum(int[][] matrix) {
             int sum = 0;
 
             for (int i = 0; i < matrix.Length; i++) {
@@ -119,7 +119,7 @@ namespace CodeSignal_Arcade_CSharp
             return sum;
         }
 
-        static string[] allLongestStrings(string[] inputArray) {
+        public static string[] allLongestStrings(string[] inputArray) {
             List<string> longestStrings = new List<string>();
             int maxLength = 0;
 
@@ -136,7 +136,7 @@ namespace CodeSignal_Arcade_CSharp
             return longestStrings.ToArray();
         }
 
-        static int commonCharacterCount(string s1, string s2) {
+        public static int commonCharacterCount(string s1, string s2) {
             HashSet<char> characterSet = new HashSet<char>();
             Dictionary<char,int> freqMap1 = new Dictionary<char,int>();
             Dictionary<char,int> freqMap2 = new Dictionary<char,int>();
@@ -167,7 +167,7 @@ namespace CodeSignal_Arcade_CSharp
             return count;
         }
 
-        static bool isLucky(int n) {
+        public static bool isLucky(int n) {
             string number = n.ToString();
             int sumA = 0, sumB = 0, middleBound = (number.Length / 2);
             
@@ -182,11 +182,11 @@ namespace CodeSignal_Arcade_CSharp
             return (sumA == sumB);
         }
 
-        static bool isTree(int n) {
+        public static bool isTree(int n) {
             return (n == -1);
         }
 
-        static int[] sortByHeight(int[] a) {
+        public static int[] sortByHeight(int[] a) {
             List<int> sorted = new List<int>(a);
 
             sorted.RemoveAll(isTree);
@@ -203,7 +203,7 @@ namespace CodeSignal_Arcade_CSharp
             return a;
         }
 
-        static string reverseInParentheses(string inputString) {
+        public static string reverseInParentheses(string inputString) {
             StringBuilder result = new StringBuilder(), buffer = null;
             Stack<StringBuilder> stack = new Stack<StringBuilder>();
 
@@ -241,7 +241,7 @@ namespace CodeSignal_Arcade_CSharp
             return result.ToString();
         }
 
-        static int[] alternatingSums(int[] a) {
+        public static int[] alternatingSums(int[] a) {
             int[] sums = new int[2];
 
             for (int i = 0; i < a.Length; i++) {
@@ -255,7 +255,7 @@ namespace CodeSignal_Arcade_CSharp
             return sums;
         }
 
-        static string[] addBorder(string[] picture) {
+        public static string[] addBorder(string[] picture) {
             string[] result = new string[picture.Length + 2];
 
             result[0] = new string('*', picture[0].Length + 2);
@@ -268,7 +268,7 @@ namespace CodeSignal_Arcade_CSharp
             return result;
         }
 
-        static bool areSimilar(int[] a, int[] b) {
+        public static bool areSimilar(int[] a, int[] b) {
             if (a.Length != b.Length) return false;
             if (a.SequenceEqual(b)) return true;
 
@@ -293,7 +293,7 @@ namespace CodeSignal_Arcade_CSharp
             return false;
         }
 
-        static int fixItem(int[] a, int i) {
+        public static int fixItem(int[] a, int i) {
             int moves = 0;
 
             while (a[i] <= a[i - 1]) {
@@ -303,7 +303,7 @@ namespace CodeSignal_Arcade_CSharp
 
             return moves;
         }
-        static int arrayChange(int[] inputArray) {
+        public static int arrayChange(int[] inputArray) {
             int moves = 0;
 
             for (int i = 1; i < inputArray.Length; i++) {
