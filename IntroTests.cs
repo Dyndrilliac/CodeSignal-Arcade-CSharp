@@ -14,6 +14,37 @@ namespace CodeSignal_Arcade_CSharp
             public PickProblemException(string message) : base(message) {}
         }
 
+        private static char pickAutoTests() {
+            Console.WriteLine("\nWould you like automated testing?\n");
+            Console.WriteLine("\t[{0}]\t{1}", "Y/y", "Yes, use automated testing.");
+            Console.WriteLine("\t[{0}]\t{1}", "N/n", "No, use customized testing.");
+            Console.Write("\nSelection (0 to exit):\t");
+            return Char.Parse(Console.ReadLine());
+        }
+
+        public static uint pickProblem() {
+            Console.WriteLine("\nPick a problem:\n");
+            Console.WriteLine("\t[{0}]\t{1}", 1, "add");
+            Console.WriteLine("\t[{0}]\t{1}", 2, "centuryFromYear");
+            Console.WriteLine("\t[{0}]\t{1}", 3, "checkPalindrome");
+            Console.WriteLine("\t[{0}]\t{1}", 4, "adjacentElementsProduct");
+            Console.WriteLine("\t[{0}]\t{1}", 5, "shapeArea");
+            Console.WriteLine("\t[{0}]\t{1}", 6, "makeArrayConsecutive2");
+            Console.WriteLine("\t[{0}]\t{1}", 7, "almostIncreasingSequence");
+            Console.WriteLine("\t[{0}]\t{1}", 8, "matrixElementsSum");
+            Console.WriteLine("\t[{0}]\t{1}", 9, "allLongestStrings");
+            Console.WriteLine("\t[{0}]\t{1}", 10, "commonCharacterCount");
+            Console.WriteLine("\t[{0}]\t{1}", 11, "isLucky");
+            Console.WriteLine("\t[{0}]\t{1}", 12, "sortByHeight");
+            Console.WriteLine("\t[{0}]\t{1}", 13, "reverseInParentheses");
+            Console.WriteLine("\t[{0}]\t{1}", 14, "alternatingSums");
+            Console.WriteLine("\t[{0}]\t{1}", 15, "addBorder");
+            Console.WriteLine("\t[{0}]\t{1}", 16, "areSimilar");
+            Console.WriteLine("\t[{0}]\t{1}", 17, "arrayChange");
+            Console.Write("\nSelection (0 to exit):\t");
+            return UInt32.Parse(Console.ReadLine());
+        }
+
         public static void runTests(uint problem) {
             if (problem == 0) return;
             if (problem > 60) throw new PickProblemException(PROBLEM_EXIST_ERROR);
@@ -22,9 +53,28 @@ namespace CodeSignal_Arcade_CSharp
         }
 
         private static bool testBed(uint problem) {
-            bool overallResult = true, autoTests = true;
+            bool overallResult = true, autoTests = true, validChoice = false;
+            char testChoice = '\0';
 
-            // TODO: Implement the ability to choose to perform custom testing.
+            do {
+                Console.Clear();
+                testChoice = pickAutoTests();
+
+                if (testChoice == '0') {
+                    validChoice = true;
+                    return false;
+                }
+
+                if ((testChoice == 'Y') || (testChoice == 'y')) {
+                    autoTests = true;
+                    validChoice = true;
+                }
+
+                if ((testChoice == 'N') || (testChoice == 'n')) {
+                    autoTests = false;
+                    validChoice = true;
+                }
+            } while (!validChoice);
 
             switch (problem) {
                 case 1:
@@ -126,6 +176,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -139,6 +190,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -152,6 +204,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -165,6 +218,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -178,6 +232,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -191,6 +246,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -204,6 +260,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -217,6 +274,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -230,6 +288,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -243,6 +302,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -256,6 +316,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -269,6 +330,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -282,6 +344,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -295,6 +358,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -308,6 +372,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
@@ -321,6 +386,7 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
+                // TODO: Implement automated testing.
                 throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
             } else {
                 // TODO: Implement the ability to perform custom testing.
