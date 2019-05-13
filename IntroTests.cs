@@ -135,6 +135,14 @@ namespace CodeSignal_Arcade_CSharp
             return overallResult;
         }
 
+        private static bool empty_test_stub(bool autoTests) {
+            if (autoTests) {
+                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+            } else {
+                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+            }
+        }
+
         private static bool problem1(bool autoTests) {
             bool overallResult = true;
 
@@ -168,7 +176,7 @@ namespace CodeSignal_Arcade_CSharp
                 }
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -178,11 +186,39 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
-                // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                const int numTests = 9;
+                const int numArgs = 2;
+
+                int[,] testData = new int[numTests,numArgs]{
+                    {1905,20},
+                    {1700,17},
+                    {1988,20},
+                    {2000,20},
+                    {2001,21},
+                    {200 ,2 },
+                    {374 ,4 },
+                    {45  ,1 },
+                    {8   ,1 }
+                };
+
+                bool[] testResults = new bool[numTests];
+
+                for (int i = 0; i < numTests; i++) {
+                    int param1 = testData[i,0], answer = testData[i,1];
+                    bool success = (IntroSolutions.centuryFromYear(param1) == answer);
+
+                    if (success) testResults[i] = true;
+                    else {
+                        testResults[i] = false;
+                        overallResult = false;
+                        Console.WriteLine("\nTest {0} Status:\t\tFailed!", (i + 1));
+                        Console.WriteLine("Input Data:\n\tparam1:\t\t{0}", param1);
+                        Console.WriteLine("Expected Output:\n\tanswer:\t\t{0}", answer);
+                    }
+                }
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -193,10 +229,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -207,10 +243,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -221,10 +257,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -235,10 +271,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -249,10 +285,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -263,10 +299,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -277,10 +313,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -291,10 +327,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -305,10 +341,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -319,10 +355,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -333,10 +369,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -347,10 +383,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -361,10 +397,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -375,10 +411,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -389,10 +425,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
@@ -403,13 +439,15 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+                overallResult = empty_test_stub(autoTests);
             }
 
             return overallResult;
         }
+
+        // TODO: Finish the rest of the CodeSignal Arcade Intro tasks.
     }
 }
