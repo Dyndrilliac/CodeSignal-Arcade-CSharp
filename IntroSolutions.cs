@@ -303,8 +303,10 @@ namespace CodeSignal_Arcade_CSharp
 
             foreach (char c in inputString) {
                 if (freqMap.ContainsKey(c)) freqMap[c]++;
-                else freqMap.Add(c,1);
-                characterSet.Add(c);
+                else {
+                    freqMap.Add(c,1);
+                    characterSet.Add(c);
+                }
             }
 
             bool foundOdd = false;

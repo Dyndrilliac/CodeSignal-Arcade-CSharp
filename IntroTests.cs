@@ -135,12 +135,8 @@ namespace CodeSignal_Arcade_CSharp
             return overallResult;
         }
 
-        private static bool empty_test_stub(bool autoTests) {
-            if (autoTests) {
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
-            } else {
-                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
-            }
+        private static bool empty_test_stub() {
+            throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
         }
 
         private static bool problem1(bool autoTests) {
@@ -159,16 +155,13 @@ namespace CodeSignal_Arcade_CSharp
                     {-1000,-1000,-2000}
                 };
 
-                bool[] testResults = new bool[numTests];
-
                 for (int i = 0; i < numTests; i++) {
                     int param1 = testData[i,0], param2 = testData[i,1], answer = testData[i,2];
                     bool success = (IntroSolutions.add(param1, param2) == answer);
 
-                    if (success) testResults[i] = true;
+                    if (success) continue;
                     else {
-                        testResults[i] = false;
-                        overallResult = false;
+                        overallResult = success;
                         Console.WriteLine("\nTest {0} Status:\t\tFailed!", (i + 1));
                         Console.WriteLine("Input Data:\n\tparam1:\t\t{0}\n\tparam2:\t\t{1}", param1, param2);
                         Console.WriteLine("Expected Output:\n\tanswer:\t\t{0}", answer);
@@ -176,7 +169,7 @@ namespace CodeSignal_Arcade_CSharp
                 }
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -201,16 +194,13 @@ namespace CodeSignal_Arcade_CSharp
                     {8   ,1 }
                 };
 
-                bool[] testResults = new bool[numTests];
-
                 for (int i = 0; i < numTests; i++) {
                     int param1 = testData[i,0], answer = testData[i,1];
                     bool success = (IntroSolutions.centuryFromYear(param1) == answer);
 
-                    if (success) testResults[i] = true;
+                    if (success) continue;
                     else {
-                        testResults[i] = false;
-                        overallResult = false;
+                        overallResult = success;
                         Console.WriteLine("\nTest {0} Status:\t\tFailed!", (i + 1));
                         Console.WriteLine("Input Data:\n\tparam1:\t\t{0}", param1);
                         Console.WriteLine("Expected Output:\n\tanswer:\t\t{0}", answer);
@@ -218,7 +208,7 @@ namespace CodeSignal_Arcade_CSharp
                 }
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -228,11 +218,49 @@ namespace CodeSignal_Arcade_CSharp
             bool overallResult = true;
 
             if (autoTests) {
-                // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                const int numTests = 10;
+
+                string[] testInput = new string[numTests]{
+                    "aabaa",
+                    "abac",
+                    "a",
+                    "az",
+                    "abacaba",
+                    "z",
+                    "aaabaaaa",
+                    "zzzazzazz",
+                    "hlbeeykoqqqqokyeeblh",
+                    "hlbeeykoqqqokyeeblh"
+                };
+
+                bool[] testOutput = new bool[numTests]{
+                    true,
+                    false,
+                    true,
+                    false,
+                    true,
+                    true,
+                    false,
+                    false,
+                    true,
+                    true
+                };
+
+                for (int i = 0; i < numTests; i++) {
+                    string param1 = testInput[i];
+                    bool answer = testOutput[i], success = (IntroSolutions.checkPalindrome(param1) == answer);
+
+                    if (success) continue;
+                    else {
+                        overallResult = success;
+                        Console.WriteLine("\nTest {0} Status:\t\tFailed!", (i + 1));
+                        Console.WriteLine("Input Data:\n\tparam1:\t\t{0}", param1);
+                        Console.WriteLine("Expected Output:\n\tanswer:\t\t{0}", answer);
+                    }
+                }
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -243,10 +271,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -257,10 +285,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -271,10 +299,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -285,10 +313,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -299,10 +327,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -313,10 +341,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -327,10 +355,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -341,10 +369,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -355,10 +383,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -369,10 +397,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -383,10 +411,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -397,10 +425,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -411,10 +439,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -425,10 +453,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
@@ -439,10 +467,10 @@ namespace CodeSignal_Arcade_CSharp
 
             if (autoTests) {
                 // TODO: Implement automated testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             } else {
                 // TODO: Implement the ability to perform custom testing.
-                overallResult = empty_test_stub(autoTests);
+                overallResult = empty_test_stub();
             }
 
             return overallResult;
