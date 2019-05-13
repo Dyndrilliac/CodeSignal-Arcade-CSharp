@@ -31,6 +31,16 @@
                 "${workspaceFolder}/CodeSignal-Arcade-CSharp.csproj"
             ],
             "problemMatcher": "$tsc"
+        },
+        {
+            "label": "run",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "run",
+                "${workspaceFolder}/CodeSignal-Arcade-CSharp.csproj"
+            ],
+            "problemMatcher": "$tsc"
         }
     ]
 }
