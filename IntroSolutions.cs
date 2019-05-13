@@ -294,6 +294,31 @@ namespace CodeSignal_Arcade_CSharp
             return moves;
         }
 
-        // TODO: Finish the rest of the CodeSignal Arcade tasks.
+        public static bool palindromeRearranging(string inputString) {
+            if (string.IsNullOrEmpty(inputString)) return false;
+            if (inputString.Length == 1) return true;
+
+            Dictionary<char,int> freqMap = new Dictionary<char,int>();
+            HashSet<char> characterSet = new HashSet<char>();
+
+            foreach (char c in inputString) {
+                if (freqMap.ContainsKey(c)) freqMap[c]++;
+                else freqMap.Add(c,1);
+                characterSet.Add(c);
+            }
+
+            bool foundOdd = false;
+
+            foreach (char c in characterSet) {
+                if ((freqMap[c] % 2) != 0) {
+                    if (foundOdd) return false;
+                    else foundOdd = true;
+                }
+            }
+
+            return true;
+        }
+
+        // TODO: Finish the rest of the CodeSignal Arcade Intro tasks.
     }
 }

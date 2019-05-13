@@ -10,37 +10,40 @@ namespace CodeSignal_Arcade_CSharp
 
         private const string PROBLEM_TESTS_IMPLEMENT_ERROR = "Tests not yet implemented.";
 
+        private const string MENU_FORMAT = Program.MENU_FORMAT;
+
         public class PickProblemException : Exception {
             public PickProblemException(string message) : base(message) {}
         }
 
         private static char pickAutoTests() {
             Console.WriteLine("\nWould you like automated testing?\n");
-            Console.WriteLine("\t[{0}]\t{1}", "Y/y", "Yes, use automated testing.");
-            Console.WriteLine("\t[{0}]\t{1}", "N/n", "No, use customized testing.");
+            Console.WriteLine(MENU_FORMAT, "Y/y", "Yes, use automated testing.");
+            Console.WriteLine(MENU_FORMAT, "N/n", "No, use customized testing.");
             Console.Write("\nSelection (0 to exit):\t");
             return Char.Parse(Console.ReadLine());
         }
 
         public static uint pickProblem() {
             Console.WriteLine("\nPick a problem:\n");
-            Console.WriteLine("\t[{0}]\t{1}", 1, "add");
-            Console.WriteLine("\t[{0}]\t{1}", 2, "centuryFromYear");
-            Console.WriteLine("\t[{0}]\t{1}", 3, "checkPalindrome");
-            Console.WriteLine("\t[{0}]\t{1}", 4, "adjacentElementsProduct");
-            Console.WriteLine("\t[{0}]\t{1}", 5, "shapeArea");
-            Console.WriteLine("\t[{0}]\t{1}", 6, "makeArrayConsecutive2");
-            Console.WriteLine("\t[{0}]\t{1}", 7, "almostIncreasingSequence");
-            Console.WriteLine("\t[{0}]\t{1}", 8, "matrixElementsSum");
-            Console.WriteLine("\t[{0}]\t{1}", 9, "allLongestStrings");
-            Console.WriteLine("\t[{0}]\t{1}", 10, "commonCharacterCount");
-            Console.WriteLine("\t[{0}]\t{1}", 11, "isLucky");
-            Console.WriteLine("\t[{0}]\t{1}", 12, "sortByHeight");
-            Console.WriteLine("\t[{0}]\t{1}", 13, "reverseInParentheses");
-            Console.WriteLine("\t[{0}]\t{1}", 14, "alternatingSums");
-            Console.WriteLine("\t[{0}]\t{1}", 15, "addBorder");
-            Console.WriteLine("\t[{0}]\t{1}", 16, "areSimilar");
-            Console.WriteLine("\t[{0}]\t{1}", 17, "arrayChange");
+            Console.WriteLine(MENU_FORMAT, 1, "add");
+            Console.WriteLine(MENU_FORMAT, 2, "centuryFromYear");
+            Console.WriteLine(MENU_FORMAT, 3, "checkPalindrome");
+            Console.WriteLine(MENU_FORMAT, 4, "adjacentElementsProduct");
+            Console.WriteLine(MENU_FORMAT, 5, "shapeArea");
+            Console.WriteLine(MENU_FORMAT, 6, "makeArrayConsecutive2");
+            Console.WriteLine(MENU_FORMAT, 7, "almostIncreasingSequence");
+            Console.WriteLine(MENU_FORMAT, 8, "matrixElementsSum");
+            Console.WriteLine(MENU_FORMAT, 9, "allLongestStrings");
+            Console.WriteLine(MENU_FORMAT, 10, "commonCharacterCount");
+            Console.WriteLine(MENU_FORMAT, 11, "isLucky");
+            Console.WriteLine(MENU_FORMAT, 12, "sortByHeight");
+            Console.WriteLine(MENU_FORMAT, 13, "reverseInParentheses");
+            Console.WriteLine(MENU_FORMAT, 14, "alternatingSums");
+            Console.WriteLine(MENU_FORMAT, 15, "addBorder");
+            Console.WriteLine(MENU_FORMAT, 16, "areSimilar");
+            Console.WriteLine(MENU_FORMAT, 17, "arrayChange");
+            Console.WriteLine(MENU_FORMAT, 18, "palindromeRearranging");
             Console.Write("\nSelection (0 to exit):\t");
             return UInt32.Parse(Console.ReadLine());
         }
@@ -48,7 +51,7 @@ namespace CodeSignal_Arcade_CSharp
         public static void runTests(uint problem) {
             if (problem == 0) return;
             if (problem > 60) throw new PickProblemException(PROBLEM_EXIST_ERROR);
-            if (problem > 17) throw new PickProblemException(PROBLEM_IMPLEMENT_ERROR);
+            if (problem > 18) throw new PickProblemException(PROBLEM_IMPLEMENT_ERROR);
             if (testBed(problem)) Console.WriteLine("\nAll tests completed successfully!");
         }
 
@@ -63,14 +66,10 @@ namespace CodeSignal_Arcade_CSharp
                 if (testChoice == '0') {
                     validChoice = true;
                     return false;
-                }
-
-                if ((testChoice == 'Y') || (testChoice == 'y')) {
+                } else if ((testChoice == 'Y') || (testChoice == 'y')) {
                     autoTests = true;
                     validChoice = true;
-                }
-
-                if ((testChoice == 'N') || (testChoice == 'n')) {
+                } else if ((testChoice == 'N') || (testChoice == 'n')) {
                     autoTests = false;
                     validChoice = true;
                 }
@@ -127,6 +126,9 @@ namespace CodeSignal_Arcade_CSharp
                     break;
                 case 17:
                     overallResult = problem17(autoTests);
+                    break;
+                case 18:
+                    overallResult = problem18(autoTests);
                     break;
             }
 
@@ -383,6 +385,20 @@ namespace CodeSignal_Arcade_CSharp
         }
 
         private static bool problem17(bool autoTests) {
+            bool overallResult = true;
+
+            if (autoTests) {
+                // TODO: Implement automated testing.
+                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+            } else {
+                // TODO: Implement the ability to perform custom testing.
+                throw new PickProblemException(PROBLEM_TESTS_IMPLEMENT_ERROR);
+            }
+
+            return overallResult;
+        }
+
+        private static bool problem18(bool autoTests) {
             bool overallResult = true;
 
             if (autoTests) {

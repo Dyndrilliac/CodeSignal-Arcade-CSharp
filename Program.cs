@@ -8,6 +8,8 @@ namespace CodeSignal_Arcade_CSharp
 
         private const string WORLD_IMPLEMENT_ERROR = "World not yet implemented.";
 
+        public const string MENU_FORMAT = "\t[{0}]\t{1}";
+
         public class PickWorldException : Exception {
             public PickWorldException(string message) : base(message) {}
         }
@@ -56,11 +58,11 @@ namespace CodeSignal_Arcade_CSharp
 
         private static uint pickWorld() {
             Console.WriteLine("\nPick a world:\n");
-            Console.WriteLine("\t[{0}]\t{1}", 1, "Intro");
-            Console.WriteLine("\t[{0}]\t{1}", 2, "Databases");
-            Console.WriteLine("\t[{0}]\t{1}", 3, "The Core");
-            Console.WriteLine("\t[{0}]\t{1}", 4, "Python");
-            Console.WriteLine("\t[{0}]\t{1}", 5, "Graphs");
+            Console.WriteLine(MENU_FORMAT, 1, "Intro");
+            Console.WriteLine(MENU_FORMAT, 2, "Databases");
+            Console.WriteLine(MENU_FORMAT, 3, "The Core");
+            Console.WriteLine(MENU_FORMAT, 4, "Python");
+            Console.WriteLine(MENU_FORMAT, 5, "Graphs");
             Console.Write("\nSelection (0 to exit):\t");
             return UInt32.Parse(Console.ReadLine());
         }
