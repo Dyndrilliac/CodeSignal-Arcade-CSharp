@@ -44,6 +44,9 @@ namespace CodeSignal_Arcade_CSharp
             Console.WriteLine(MENU_FORMAT, 16, "areSimilar");
             Console.WriteLine(MENU_FORMAT, 17, "arrayChange");
             Console.WriteLine(MENU_FORMAT, 18, "palindromeRearranging");
+            Console.WriteLine(MENU_FORMAT, 19, "areEquallyStrong");
+            Console.WriteLine(MENU_FORMAT, 20, "arrayMaximalAdjacentDifference");
+            Console.WriteLine(MENU_FORMAT, 21, "isIPv4Address");
             Console.Write("\nSelection (0 to exit):\t");
             return UInt32.Parse(Console.ReadLine());
         }
@@ -51,7 +54,7 @@ namespace CodeSignal_Arcade_CSharp
         public static void runTests(uint problem) {
             if (problem == 0) return;
             if (problem > 60) throw new PickProblemException(PROBLEM_EXIST_ERROR);
-            if (problem > 18) throw new PickProblemException(PROBLEM_IMPLEMENT_ERROR);
+            if (problem > 21) throw new PickProblemException(PROBLEM_IMPLEMENT_ERROR);
             if (testBed(problem)) Console.WriteLine("\nAll tests completed successfully!");
         }
 
@@ -129,6 +132,15 @@ namespace CodeSignal_Arcade_CSharp
                     break;
                 case 18:
                     overallResult = problem18(autoTests);
+                    break;
+                case 19:
+                    overallResult = problem19(autoTests);
+                    break;
+                case 20:
+                    overallResult = problem20(autoTests);
+                    break;
+                case 21:
+                    overallResult = problem21(autoTests);
                     break;
             }
 
@@ -463,6 +475,48 @@ namespace CodeSignal_Arcade_CSharp
         }
 
         private static bool problem18(bool autoTests) {
+            bool overallResult = true;
+
+            if (autoTests) {
+                // TODO: Implement automated testing.
+                overallResult = empty_test_stub();
+            } else {
+                // TODO: Implement the ability to perform custom testing.
+                overallResult = empty_test_stub();
+            }
+
+            return overallResult;
+        }
+
+        private static bool problem19(bool autoTests) {
+            bool overallResult = true;
+
+            if (autoTests) {
+                // TODO: Implement automated testing.
+                overallResult = empty_test_stub();
+            } else {
+                // TODO: Implement the ability to perform custom testing.
+                overallResult = empty_test_stub();
+            }
+
+            return overallResult;
+        }
+
+        private static bool problem20(bool autoTests) {
+            bool overallResult = true;
+
+            if (autoTests) {
+                // TODO: Implement automated testing.
+                overallResult = empty_test_stub();
+            } else {
+                // TODO: Implement the ability to perform custom testing.
+                overallResult = empty_test_stub();
+            }
+
+            return overallResult;
+        }
+
+        private static bool problem21(bool autoTests) {
             bool overallResult = true;
 
             if (autoTests) {

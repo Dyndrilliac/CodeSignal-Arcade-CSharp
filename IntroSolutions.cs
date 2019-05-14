@@ -23,7 +23,7 @@ namespace CodeSignal_Arcade_CSharp
         public static int adjacentElementsProduct(int[] inputArray) {
             List<int> outputList = new List<int>();
 
-            for (int i = 0; i < (inputArray.Length - 1); i++) outputList.Add(inputArray[i] * inputArray[i+1]);
+            for (int i = 0; i < (inputArray.Length - 1); i++) outputList.Add(inputArray[i] * inputArray[i + 1]);
 
             return outputList.Max();
         }
@@ -142,16 +142,18 @@ namespace CodeSignal_Arcade_CSharp
 
             foreach (char c in s1) {
                 if (freqMap1.ContainsKey(c)) freqMap1[c] += 1;
-                else freqMap1.Add(c,1);
-
-                characterSet.Add(c);
+                else {
+                    freqMap1.Add(c,1);
+                    characterSet.Add(c);
+                }
             }
 
             foreach (char c in s2) {
                 if (freqMap2.ContainsKey(c)) freqMap2[c] += 1;
-                else freqMap2.Add(c,1);
-
-                characterSet.Add(c);
+                else {
+                    freqMap2.Add(c,1);
+                    characterSet.Add(c);
+                }
             }
 
             foreach (char c in characterSet) {
@@ -320,6 +322,25 @@ namespace CodeSignal_Arcade_CSharp
             }
 
             return true;
+        }
+
+        public static bool areEquallyStrong(int yourLeft, int yourRight, int friendsLeft, int friendsRight) {
+            return ((Math.Max(yourLeft, yourRight) == Math.Max(friendsLeft, friendsRight)) && (Math.Min(yourLeft, yourRight) == Math.Min(friendsLeft, friendsRight)));
+        }
+
+        public static int arrayMaximalAdjacentDifference(int[] inputArray) {
+            int maxAbsDif = 0;
+
+            for (int i = 0; (i + 1) < inputArray.Length; i++) maxAbsDif = Math.Max(maxAbsDif, Math.Abs(inputArray[i] - inputArray[i + 1]));
+
+            return maxAbsDif;
+        }
+
+        public static bool isIPv4Address(string inputString) {
+            string pattern = @"^\b(?:(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\.){3}(?:(?:2([0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9]))\b$";
+            Regex rx = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            MatchCollection matches = rx.Matches(inputString);
+            return (matches.Count == 1);
         }
 
         // TODO: Finish the rest of the CodeSignal Arcade Intro tasks.
