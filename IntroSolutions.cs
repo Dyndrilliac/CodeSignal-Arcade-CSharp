@@ -343,6 +343,120 @@ namespace CodeSignal_Arcade_CSharp
             return (matches.Count == 1);
         }
 
+        public static int avoidObstacles(int[] inputArray) {
+            List<int> list = new List<int>(inputArray);
+
+            for (int minJump = 2; minJump < (list.Max() + 1); minJump++) {
+                bool encounteredObstacle = false;
+
+                for (int i = 0; i < (list.Max() + 1); i += minJump) {
+                    if (list.Contains(i)) {
+                        encounteredObstacle = true;
+                        break;
+                    }
+                }
+
+                if (!encounteredObstacle) return minJump;
+            }
+
+            return (list.Max() + 1);
+        }
+
+        public static int[][] boxBlur(int[][] image) {
+            int resultRows = image.Length - 2, resultCols = image[0].Length - 2;
+            int[][] result = new int[resultRows][];
+            for (int i = 0; i < resultRows; i++) result[i] = new int[resultCols];
+
+            for (int i = 1, resRow = 0; i < (image.Length - 1); i++, resRow++) {
+                for (int j = 1, resCol = 0; j < (image[0].Length - 1); j++, resCol++) {
+                    int upperLeft = image[i - 1][j - 1], upperCenter = image[i - 1][j], upperRight = image[i - 1][j + 1];
+                    int middleLeft = image[i][j - 1], middleCenter = image[i][j], middleRight = image[i][j + 1];
+                    int lowerLeft = image[i + 1][j - 1], lowerCenter = image[i + 1][j], lowerRight = image[i + 1][j + 1];
+                    int sum = (upperLeft + upperCenter + upperRight + middleLeft + middleCenter + middleRight + lowerLeft + lowerCenter + lowerRight);
+                    result[resRow][resCol] = (int)Math.Floor(((double)sum) / 9.0);
+                }
+            }
+
+            return result;
+        }
+
+        private static int countMines(bool[][] a, int i, int j) {
+            int rows = a.Length, cols = a[0].Length;
+            int count = 0;
+
+            for (int y = (i - 1); y <= (i + 1); y++) {
+                if ((y >= 0) && (y < rows)) {
+                    for (int x = (j - 1); x <= (j + 1); x++) {
+                        if ((x >= 0) && (x < cols)) {
+                            if (a[y][x] == true) count++;
+                        }
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        public static int[][] minesweeper(bool[][] matrix) {
+            int rows = matrix.Length, cols = matrix[0].Length;
+            int[][] result = new int[rows][];
+            for (int i = 0; i < rows; i++) result[i] = new int[cols];
+
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    if (!matrix[i][j]) {
+                        result[i][j] = countMines(matrix, i, j);
+                    } else {
+                        result[i][j] = (countMines(matrix, i, j) - 1);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        public static int[] arrayReplace(int[] inputArray, int elemToReplace, int substitutionElem) {
+            for (int i = 0; i < inputArray.Length; i++) {
+                if (inputArray[i] == elemToReplace) inputArray[i] = substitutionElem;
+            }
+            
+            return inputArray;
+        }
+
+        public static bool evenDigitsOnly(int n) {
+            string s = n.ToString();
+            bool result = true;
+
+            foreach (char c in s) {
+                if ((Int32.Parse(c.ToString()) % 2) != 0) {
+                    result = false;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
+        public static bool variableName(String name) {
+            string pattern = @"^([a-zA-Z_](\w+)*)$";
+            Regex rx = new Regex(pattern, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            MatchCollection matches = rx.Matches(name);
+            return (matches.Count == 1);
+        }
+
+        private static char characterMap(char c) {
+            if (c != 'z') return (char)((int)c + 1);
+            else return 'a';
+        }
+
+        public static string alphabeticShift(string inputString) {
+            StringBuilder buffer = new StringBuilder();
+
+            foreach (char c in inputString) buffer.Append(characterMap(c));
+
+            return buffer.ToString();
+        }
+
         // TODO: Finish the rest of the CodeSignal Arcade Intro tasks.
     }
 }
