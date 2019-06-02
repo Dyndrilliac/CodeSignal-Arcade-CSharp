@@ -74,6 +74,13 @@ namespace CodeSignal
             return false;
         }
 
+        public static bool willYou(bool young, bool beautiful, bool loved) => ((young && beautiful && !loved) || (loved && (!young || !beautiful))) ? true : false;
+
+        public static int[] metroCard(int lastNumberOfDays) => Enumerable.Range(1, 12).Where(x => DateTime.DaysInMonth(1998, x) == lastNumberOfDays)
+                                                                .Select(x => DateTime.DaysInMonth(1998, x < 12 ? x + 1 : x)).Distinct().ToArray();
+
+        public static int killKthBit(int n, int k) => n & ~(1 << (k - 1));
+
         // TODO: Finish the rest of the CodeSignal Arcade Core tasks.
     }
 }
