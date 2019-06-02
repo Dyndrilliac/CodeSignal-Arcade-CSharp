@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace CodeSignal_Arcade_CSharp
+namespace CodeSignal
 {
-    class Program
+    public static class Program
     {
         private const string WORLD_EXIST_ERROR = "World does not exist.";
 
@@ -29,8 +29,8 @@ namespace CodeSignal_Arcade_CSharp
                             break;
                         case 1:
                             try {
-                                choice = IntroTests.pickProblem();
-                                IntroTests.runTests(choice);
+                                choice = Tests.Intro.pickProblem();
+                                Tests.Intro.runTests(choice);
                             } catch (Exception e) {
                                 Console.WriteLine("\n" + e.Message);
                             }

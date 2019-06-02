@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/CodeSignal-Arcade-CSharp.csproj"
+                "${workspaceFolder}/CodeSignal-Problems.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/CodeSignal-Arcade-CSharp.csproj"
+                "${workspaceFolder}/CodeSignal-Problems.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/CodeSignal-Arcade-CSharp.csproj"
+                "${workspaceFolder}/CodeSignal-Problems.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -38,7 +38,7 @@
             "type": "process",
             "args": [
                 "run",
-                "${workspaceFolder}/CodeSignal-Arcade-CSharp.csproj"
+                "${workspaceFolder}/CodeSignal-Problems.csproj"
             ],
             "problemMatcher": "$tsc"
         }
