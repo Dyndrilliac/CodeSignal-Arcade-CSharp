@@ -1,6 +1,6 @@
 *******************************************************************
 
-* Title:  CodeSignal
+* Title:  CodeSignal-Problems
 * Author: [Matthew Boyette](mailto:Dyndrilliac@gmail.com)
 * Date:   5/12/2019
 
