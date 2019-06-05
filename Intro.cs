@@ -16,22 +16,19 @@ namespace CodeSignal
 
         public static int adjacentElementsProduct(int[] inputArray) {
             var outputList = new List<int>();
+
             for (int i = 0; i < inputArray.Length - 1; i++) outputList.Add(inputArray[i] * inputArray[i + 1]);
+
             return outputList.Max();
         }
 
         public static int shapeArea(int n) {
             switch (n) {
-                case 4:
-                    return 25;
-                case 3:
-                    return 13;
-                case 2:
-                    return 5;
-                case 1:
-                    return 1;
-                default:
-                    return (shapeArea(n - 1) + ((n - 1) * 4));
+                case 4: return 25;
+                case 3: return 13;
+                case 2: return 5;
+                case 1: return 1;
+                default: return (shapeArea(n - 1) + ((n - 1) * 4));
             }
         }
 
@@ -60,10 +57,8 @@ namespace CodeSignal
         }
 
         public static bool almostIncreasingSequence(IEnumerable<int> sequence) {
-            if (sequence.Count() <= 2)
-                return true;
-            else if (sequence.SequenceEqual(sequence.Distinct().OrderBy(x => x)))
-                return true;
+            if (sequence.Count() <= 2) return true;
+            else if (sequence.SequenceEqual(sequence.Distinct().OrderBy(x => x))) return true;
             else {
                 int index = Enumerable.Range(0, sequence.Count()).First(x => removeElement(sequence, x));
                 sequence = sequence.Where((x, i) => i != index);
@@ -109,12 +104,14 @@ namespace CodeSignal
         public static int commonCharacterCount(string s1, string s2) {
             var freqMap1 = s1.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
             var freqMap2 = s2.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
+
             return Enumerable.Intersect(freqMap1.Keys, freqMap2.Keys).Sum(x => Math.Min(freqMap1[x], freqMap2[x]));
         }
 
         public static bool isLucky(int n) {
             string numStr = n.ToString();
             int middleBound = numStr.Length / 2;
+
             return numStr.Substring(middleBound).Sum(x => x - '0') == numStr.Remove(middleBound).Sum(x => x - '0');
         }
 
@@ -186,7 +183,6 @@ namespace CodeSignal
 
         public static string[] addBorder(string[] picture) {
             string[] result = new string[picture.Length + 2];
-
             result[0] = new string('*', picture[0].Length + 2);
             result[picture.Length + 1] = result[0];
 
@@ -232,7 +228,9 @@ namespace CodeSignal
         }
         public static int arrayChange(int[] inputArray) {
             int moves = 0;
+
             for (int i = 1; i < inputArray.Length; i++) moves += fixItem(inputArray, i);
+
             return moves;
         }
 
@@ -241,6 +239,7 @@ namespace CodeSignal
             if (inputString.Length == 1) return true;
 
             var freqMap = inputString.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
+
             return freqMap.Keys.Where(x => freqMap[x] % 2 != 0).Count() <= 1;
         }
 
@@ -250,7 +249,9 @@ namespace CodeSignal
 
         public static int arrayMaximalAdjacentDifference(int[] inputArray) {
             int maxAbsDif = 0;
+
             for (int i = 0; (i + 1) < inputArray.Length; i++) maxAbsDif = Math.Max(maxAbsDif, Math.Abs(inputArray[i] - inputArray[i + 1]));
+
             return maxAbsDif;
         }
 

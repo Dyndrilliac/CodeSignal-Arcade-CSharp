@@ -64,13 +64,16 @@ namespace CodeSignal
 
         public static bool arithmeticExpression(int a, int b, int c) {
             var tests = new bool[4] { (a + b == c), (a - b == c), (a * b == c), (b * c == a) };
+
             return tests.Any(x => x == true);
         }
 
         public static bool tennisSet(int score1, int score2) {
             int max = Math.Max(score1, score2), min = Math.Min(score1, score2);
+
             if (max == 6 && min < 5) return true;
             if (max == 7 && min < 7 && min >= 5) return true;
+
             return false;
         }
 
@@ -91,13 +94,13 @@ namespace CodeSignal
             }
         }
 
-        private static uint numberOfSetBits(uint ui) {
-            ui = ui - ((ui >> 1) & 0x55555555);
-            ui = (ui & 0x33333333) + ((ui >> 2) & 0x33333333);
-            return (((ui + (ui >> 4)) & 0x0F0F0F0F) * 0x01010101) >> 24;
+        private static int numberOfSetBits(int i) {
+            i = i - ((i >> 1) & 0x55555555);
+            i = (i & 0x33333333) + ((i >> 2) & 0x33333333);
+            return (((i + (i >> 4)) & 0x0F0F0F0F) * 0x01010101) >> 24;
         }
 
-        public static long rangeBitCount(int a, int b) => Enumerable.Range(a, (b - a) + 1).Sum(x => numberOfSetBits((uint)x));
+        public static int rangeBitCount(int a, int b) => Enumerable.Range(a, (b - a) + 1).Sum(x => numberOfSetBits(x));
 
         // TODO: Finish the rest of the CodeSignal Arcade Core tasks.
     }

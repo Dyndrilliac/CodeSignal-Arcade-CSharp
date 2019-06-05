@@ -41,7 +41,9 @@ namespace CodeSignal
 
         public static int arrayMaximalAdjacentDifference(int[] a) {
             int d = 0;
+
             for (int i = 0; i + 1 < a.Length; i++) d = Math.Max(d, Math.Abs(a[i] - a[i + 1]));
+
             return d;
         }
 
@@ -95,6 +97,35 @@ namespace CodeSignal
             a[2]*a[0]+a[1],
             a[2]
         };
+
+        public static string lineEncoding(string s) {
+            var b = new StringBuilder();
+            var q = new Queue<char>(s);
+            int n = 0;
+
+            while (q.Count > 0) {
+                char c = q.Dequeue();
+                n++;
+
+                if (q.Count == 0 || c != q.Peek()) {
+                    if (n > 1) b.Append(n);
+                    b.Append(c);
+                    n = 0;
+                }
+            }
+
+            return b.ToString();
+        }
+
+        private static bool p<T>(IEnumerable<T> s) => s.SequenceEqual(s.Reverse());
+
+        public static string buildPalindrome(string s) => p(s) ? s : s + string.Concat(
+            s.Take(
+                Enumerable.Range(1, s.Length).First( x => p(s.Skip(x)) )
+            ).Reverse()
+        );
+
+        public static bool isPrime(int n) => n > 1 ? Enumerable.Range(1, n).Where(x => n % x == 0).SequenceEqual(new[] {1, n}) : false;
 
         // TODO: Finish the rest of the CodeSignal Challenges.
     }
