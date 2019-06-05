@@ -81,6 +81,24 @@ namespace CodeSignal
 
         public static int killKthBit(int n, int k) => n & ~(1 << (k - 1));
 
+        public static int arrayPacking(int[] a) {
+            var bytes = a.Select(x => Convert.ToByte(x));
+            switch (bytes.Count()) {
+                case 2: return BitConverter.ToInt16(bytes.ToArray(), 0);
+                case 3: return BitConverter.ToInt32(bytes.Concat(new byte[1]{0}).ToArray(), 0);
+                case 4: return BitConverter.ToInt32(bytes.ToArray(), 0);
+                default: return bytes.ElementAtOrDefault(0);
+            }
+        }
+
+        private static uint numberOfSetBits(uint ui) {
+            ui = ui - ((ui >> 1) & 0x55555555);
+            ui = (ui & 0x33333333) + ((ui >> 2) & 0x33333333);
+            return (((ui + (ui >> 4)) & 0x0F0F0F0F) * 0x01010101) >> 24;
+        }
+
+        public static long rangeBitCount(int a, int b) => Enumerable.Range(a, (b - a) + 1).Sum(x => numberOfSetBits((uint)x));
+
         // TODO: Finish the rest of the CodeSignal Arcade Core tasks.
     }
 }

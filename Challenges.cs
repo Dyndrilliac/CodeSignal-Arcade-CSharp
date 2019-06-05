@@ -23,12 +23,12 @@ namespace CodeSignal
 
         public static bool reachNextLevel(int e, int t, int r) => r >= t - e;
 
-        public static int rectangleArea(int a, int b) => a*b;
+        public static int rectangleArea(int a, int b) => a * b;
 
         public static int[] directionOfReading(int[] n) {
             int s = n.Length, i, j, k;
             int[] r = new int[s];
-            
+
             for (i = s - 1; i >= 0; i--) {
                 for (k = 0, j = s - 1; k < s; j--, k++) {
                     r[i] += n[j] % 10 * (int)Math.Pow(10,k);
