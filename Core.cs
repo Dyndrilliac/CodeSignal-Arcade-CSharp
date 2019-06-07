@@ -100,7 +100,7 @@ namespace CodeSignal
             return (((i + (i >> 4)) & 0x0F0F0F0F) * 0x01010101) >> 24;
         }
 
-        public static int rangeBitCount(int a, int b) => Enumerable.Range(a, (b - a) + 1).Sum(x => numberOfSetBits(x));
+        public static int rangeBitCount(int a, int b) => Enumerable.Range(a, Math.Abs(a-b-1)).Sum(x => numberOfSetBits(x));
 
         // TODO: Finish the rest of the CodeSignal Arcade Core tasks.
     }

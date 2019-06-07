@@ -1,3 +1,5 @@
+/* MySQL */
+
 CREATE PROCEDURE projectList()
 BEGIN
     SELECT project_name, team_lead, income
@@ -444,3 +446,4 @@ BEGIN
     ORDER BY surname ASC;
 END
 
+/* TODO: Finish the rest of the CodeSignal Arcade Databases tasks.  */

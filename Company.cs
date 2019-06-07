@@ -28,6 +28,39 @@ namespace CodeSignal
                 return systems.Keys.All(s => systems[s].SequenceEqual(systems[s].OrderBy(x => x)));
             }
 
+            public static string packetDescrambler(int[] seq, char[] fragmentData, int n) {
+                var data = new SortedDictionary<int,List<char>>();
+
+                for (int i = 0; i < seq.Length; i++) {
+                    if (data.ContainsKey(seq[i])) data[seq[i]].Add(fragmentData[i]);
+                    else {
+                        data.Add(seq[i], new List<char>());
+                        data[seq[i]].Add(fragmentData[i]);
+                    }
+                }
+
+                int max = data.Keys.Max(), groups = max + 1;
+
+                if (data.Keys.SequenceEqual(Enumerable.Range(0, groups))) {
+                    var buffer = new StringBuilder();
+
+                    foreach (int i in data.Keys) {
+                        var freqMap = data[i].GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
+
+                        foreach (char c in freqMap.Keys) {
+                            if (((double)freqMap[c] / (double)n) > (double)0.500000) {
+                                if (c == '#' && i != max) return "";
+                                else buffer.Append(c);
+                            }
+                        }
+                    }
+
+                    if (buffer.Length == groups) return buffer.ToString();
+                }
+
+                return "";
+            }
+
             // TODO: Finish the rest of the CodeSignal SpaceX Company Challenges.
         }
 

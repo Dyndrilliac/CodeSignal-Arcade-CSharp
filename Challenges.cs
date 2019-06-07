@@ -127,6 +127,10 @@ namespace CodeSignal
 
         public static bool isPrime(int n) => n > 1 ? Enumerable.Range(1, n).Where(x => n % x == 0).SequenceEqual(new[] {1, n}) : false;
 
+        public static int maxDivisor(int l, int r, int d) => Enumerable.Range(l, Math.Abs(l-r-1)).Where(x => x % d == 0).DefaultIfEmpty(-1).Last();
+
+        public static string[] unusualLexOrder(string[] w) => w.OrderBy(x => string.Concat(x.Reverse())).ToArray();
+
         // TODO: Finish the rest of the CodeSignal Challenges.
     }
 }
