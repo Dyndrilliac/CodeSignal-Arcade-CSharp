@@ -334,9 +334,7 @@ namespace CodeSignal
             return (matches.Count == 1);
         }
 
-        private static char characterMap(char c) => c == 'z' ? 'a' : (char)((int)c + 1);
-
-        public static string alphabeticShift(string inputString) => string.Concat(inputString.Select(x => characterMap(x)));
+        public static string alphabeticShift(string inputString) => string.Concat(inputString.Select(x => x == 'z' ? 'a' : (char)((int)x + 1)));
 
         private static int getCellColor(string cell) => (cell[0]+cell[1]) % 2;
 

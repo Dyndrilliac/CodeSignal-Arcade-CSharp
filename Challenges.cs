@@ -89,6 +89,8 @@ namespace CodeSignal
             return false;
         }
 
+        public static string mySubstringByLength(string i, int s, int l) => i.Substring(s, l);
+
         public static int oddNumbersBeforeZero(int[] s) => s.TakeWhile(n => n > 0).Count(e => e % 2 != 0);
 
         public static string longestDigitsPrefix(string s) => string.Concat(s.TakeWhile(e => Char.IsDigit(e)));
@@ -130,6 +132,22 @@ namespace CodeSignal
         public static int maxDivisor(int l, int r, int d) => Enumerable.Range(l, Math.Abs(l-r-1)).Where(x => x % d == 0).DefaultIfEmpty(-1).Last();
 
         public static string[] unusualLexOrder(string[] w) => w.OrderBy(x => string.Concat(x.Reverse())).ToArray();
+
+        public static int maximumSubsetProduct(int[] a) => a.Where(x => x < 0).Count() % 2 == 0 || a.Length == 1 ? 1 : a.Where(x => x < 0).Max();
+
+        public static int swapNeighbouringDigits(int n) {
+            var number = new StringBuilder(Convert.ToString(n));
+
+            for (int i = 0; i < number.Length; i += 2) {
+                char temp = number[i];
+                number[i] = number[i + 1];
+                number[i + 1] = temp;
+            }
+
+            return Convert.ToInt32(number.ToString());
+        }
+
+        public static int fibonacciNumber(int n) => n > 1 ? fibonacciNumber(n - 2) + fibonacciNumber(n - 1) : n;
 
         // TODO: Finish the rest of the CodeSignal Challenges.
     }

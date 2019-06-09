@@ -58,7 +58,7 @@ namespace CodeSignal
 
         private static bool isOdd(int n) => n % 2 != 0;
 
-        private static bool isEven(int n) => !isOdd(n);
+        private static bool isEven(int n) => n % 2 == 0;
 
         public static bool isInfiniteProcess(int a, int b) => a > b || (isOdd(a) && isEven(b)) || (isEven(a) && isOdd(b));
 
@@ -101,6 +101,10 @@ namespace CodeSignal
         }
 
         public static int rangeBitCount(int a, int b) => Enumerable.Range(a, Math.Abs(a-b-1)).Sum(x => numberOfSetBits(x));
+
+        public static int mirrorBits(int a) => Convert.ToInt32(string.Concat(Convert.ToString(a, 2).Reverse()), 2);
+
+        public static int secondRightmostZeroBit(int n) => ~(n | n + 1) & ((n | n + 1) + 1);
 
         // TODO: Finish the rest of the CodeSignal Arcade Core tasks.
     }
