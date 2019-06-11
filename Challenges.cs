@@ -100,6 +100,7 @@ namespace CodeSignal
             a[2]
         };
 
+        /* See lookAndSaySequenceNextElement for an alternative implementation with a similar problem. */
         public static string lineEncoding(string s) {
             var b = new StringBuilder();
             var q = new Queue<char>(s);
@@ -148,6 +149,11 @@ namespace CodeSignal
         }
 
         public static int fibonacciNumber(int n) => n > 1 ? fibonacciNumber(n - 2) + fibonacciNumber(n - 1) : n;
+
+        public static int fibonacciNumber2(int n) => (int)(Math.Pow(1.62, n) * .439 + .7);
+
+        /* See lineEncoding for an alternative implementation with a similar problem. */
+        public static string lookAndSaySequenceNextElement(string s) => Regex.Replace(s, @"(.)\1*", m => "" + m.Length + m.Value[0]);
 
         // TODO: Finish the rest of the CodeSignal Challenges.
     }

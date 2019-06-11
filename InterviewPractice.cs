@@ -77,7 +77,85 @@ namespace CodeSignal
                 return a;
             }
 
-            // TODO: Finish the rest of the CodeSignal Interview Practice Array tasks.
+            private static int firstDuplicateInSequence(char[] a) {
+                var s = new HashSet<char>();
+
+                foreach (char c in a)
+                    if (c == '.' || !char.IsDigit(c)) continue;
+                    else if (s.Contains(c)) return (int)c;
+                    else s.Add(c);
+
+                return -1;
+            }
+
+            private static int duplicateInSubGrid(char[][] a, int row, int col) {
+                var s = new List<char>();
+
+                for (int i = 0; i < 3; i++)
+                    for (int j = 0; j < 3; j++)
+                        s.Add(a[row + i][col + j]);
+
+                return firstDuplicateInSequence(s.ToArray());
+            }
+
+            private static int firstDuplicateInSubGrid(char[][] a) {
+                for (int i = 0; i < 9; i += 3)
+                    for (int j = 0; j < 9; j += 3) {
+                        int result = duplicateInSubGrid(a, i, j);
+                        if (result != -1) return result;
+                    }
+
+                return -1;
+            }
+
+            public static bool sudoku2(char[][] grid) {
+                for (int x = 0; x < 9; x++)
+                    if (firstDuplicateInSequence(grid[x]) != -1 || firstDuplicateInSequence(grid.Select(r => r[x]).ToArray()) != -1) return false;
+                    else if (firstDuplicateInSubGrid(grid) != -1) return false;
+
+                return true;
+            }
+
+            private static double decryptString(string s, Dictionary<char,char> mapping) {
+                var buffer = new StringBuilder();
+
+                foreach (char c in s) buffer.Append(mapping[c]);
+
+                if (buffer.Length > 1 && buffer.ToString().StartsWith("0")) return -1;
+                else return Convert.ToDouble(buffer.ToString());
+            }
+
+            public static bool isCryptSolution(string[] crypt, char[][] solution) {
+                var mapping = solution.ToDictionary(x => x[0], x => x[1]);
+                double[] decrypt = new double[3]{decryptString(crypt[0], mapping), decryptString(crypt[1], mapping), decryptString(crypt[2], mapping)};
+
+                return ( decrypt[0] + decrypt[1] == decrypt[2] );
+            }
+        }
+
+        public static class LinkedLists
+        {
+            public class ListNode<T> {
+                public T value { get; set; }
+                public ListNode<T> next { get; set; }
+            }
+
+            public static ListNode<int> removeKFromList(ListNode<int> l, int k) {
+                while (l != null && l.@value == k) l = l.next;
+
+                if (l != null) {
+                    var current = l;
+
+                    while (current.next != null) {
+                        if (current.next.@value == k) current.next = current.next.next;
+                        else current = current.next;
+                    }
+                }
+
+                return l;
+            }
+
+            // TODO: Finish the rest of the CodeSignal Interview Practice LinkedList tasks.
         }
 
         // TODO: Finish the rest of the CodeSignal Interview Practice tasks.
