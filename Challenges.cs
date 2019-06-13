@@ -155,6 +155,32 @@ namespace CodeSignal
         /* See lineEncoding for an alternative implementation with a similar problem. */
         public static string lookAndSaySequenceNextElement(string s) => Regex.Replace(s, @"(.)\1*", m => "" + m.Length + m.Value[0]);
 
+        public static int[] bfsDistancesUnweightedGraph(bool[][] m, int s) {
+            var r = Enumerable.Range(0, m.Length);
+            var d = m.Select((x,i) => s == i ? 0 : x[s] ? 1 : -1).ToArray();
+            var u = new HashSet<int>(r);
+            var q = new Queue<int>();
+            q.Enqueue(s);
+
+            while (q.Count > 0) {
+                int n = q.Dequeue();
+
+                if (u.Contains(n)) {
+                    u.Remove(n);
+
+                    foreach (int v in r)
+                        if (u.Contains(v) && m[n][v]) {
+                            q.Enqueue(v);
+                            if (d[v] < 0) d[v] = d[n] + 1;
+                        }
+                }
+            }
+
+            return d;
+        }
+
+        public static int quasifactorial(int x) => Enumerable.Range(2, x - 1).Aggregate(1, (r, n) => (r * n) - 1);
+
         // TODO: Finish the rest of the CodeSignal Challenges.
     }
 }
