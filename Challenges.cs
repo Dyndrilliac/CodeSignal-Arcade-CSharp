@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -158,18 +159,18 @@ namespace CodeSignal
         public static int[] bfsDistancesUnweightedGraph(bool[][] m, int s) {
             var r = Enumerable.Range(0, m.Length);
             var d = m.Select((x,i) => s == i ? 0 : x[s] ? 1 : -1).ToArray();
-            var u = new HashSet<int>(r);
+            var u = new bool[m.Length];
             var q = new Queue<int>();
             q.Enqueue(s);
 
             while (q.Count > 0) {
                 int n = q.Dequeue();
 
-                if (u.Contains(n)) {
-                    u.Remove(n);
+                if (!u[n]) {
+                    u[n] = true;
 
                     foreach (int v in r)
-                        if (u.Contains(v) && m[n][v]) {
+                        if (!u[v] && m[n][v]) {
                             q.Enqueue(v);
                             if (d[v] < 0) d[v] = d[n] + 1;
                         }
@@ -180,6 +181,31 @@ namespace CodeSignal
         }
 
         public static int quasifactorial(int x) => Enumerable.Range(2, x - 1).Aggregate(1, (r, n) => (r * n) - 1);
+
+        public static int[] arrayComplexElementsProduct(int[] r, int[] i) {
+            var n = Complex.One;
+            
+            for (int j = 0; j < r.Length; j++)
+                n *= new Complex(r[j], i[j]);
+            
+            return new int[2] {(int)n.Real, (int)n.Imaginary};
+        }
+
+        public static int[] primeFactors(int n) {
+            if (n == 1) return new int[]{};
+
+            var r = new List<int>();
+
+            for (int i = 2; n > 1;)
+                if (n % i == 0) {
+                    r.Add(i);
+                    n /= i;
+                } else i++;
+
+            return r.ToArray();
+        }
+
+        public static bool evenDigitsOnly(int n) => n.ToString().All(x => (x - '0')  % 2 == 0);
 
         // TODO: Finish the rest of the CodeSignal Challenges.
     }

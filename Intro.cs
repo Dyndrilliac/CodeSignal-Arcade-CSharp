@@ -109,10 +109,10 @@ namespace CodeSignal
         }
 
         public static bool isLucky(int n) {
-            string numStr = n.ToString();
-            int middleBound = numStr.Length / 2;
+            var numStr = n.ToString();
+            int m = numStr.Length / 2;
 
-            return numStr.Substring(middleBound).Sum(x => x - '0') == numStr.Remove(middleBound).Sum(x => x - '0');
+            return numStr.Take(m).Sum(x => x - '0') == numStr.Skip(m).Sum(x => x - '0');
         }
 
         private static bool isTree(int n) => n == -1;

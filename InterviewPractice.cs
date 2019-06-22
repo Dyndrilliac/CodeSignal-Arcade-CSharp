@@ -155,6 +155,52 @@ namespace CodeSignal
                 return l;
             }
 
+            private static int countElements(ListNode<int> l) {
+                int count = 0;
+                var current = l;
+
+                while (current != null) {
+                    current = current.next;
+                    count++;
+                }
+
+                return count;
+            }
+
+            private static ListNode<int> reverseList(ListNode<int> l) {
+                if (l == null || l.next == null) return l;
+
+                var reversed = l;
+                var remaining = l.next;
+                reversed.next = null;
+
+                while (remaining != null) {
+                    var temp = remaining;
+                    remaining = remaining.next;
+                    temp.next = reversed;
+                    reversed = temp;
+                }
+
+                return reversed;
+            }
+
+            public static bool isListPalindrome(ListNode<int> l) {
+                if (!(l == null || l.next == null)) {
+                    int n = countElements(l), m = n / 2;
+
+                    var current = l;
+                    for (int i = 0; i < m; i++) current = current.next;
+                    var reversed = reverseList(current);
+                    for (int i = 0; i < m; i++) {
+                        if (l.@value != reversed.@value) return false;
+                        l = l.next;
+                        reversed = reversed.next;
+                    }
+                }
+
+                return true;
+            }
+
             // TODO: Finish the rest of the CodeSignal Interview Practice LinkedList tasks.
         }
 
